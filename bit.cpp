@@ -1,16 +1,16 @@
 #include "logic gate.cpp"
 
-struct bit
+struct bit // equivalent to memory cell (should we consider )
 {
-    bool value;
+    unsigned int value : 1;
 
     void set()
     {
-        value = true;
+        value = 1;
     }
     void clear()
     {
-        value = false;
+        value = 0;
     }
     void toggle()
     {
@@ -79,16 +79,28 @@ struct bit
     }
     bit &operator++()
     {
-        value = true; // Incrementing a bit just sets it to 1 fact check this? true because ensuring its in its max state
+        value = 1; // Incrementing a bit just sets it to 1 fact check this? 1 because ensuring its in its max state
         return *this;
     }
     bit &operator--()
     {
-        value = false; // Decrementing a bit just sets it to 0 minum state
+        value = 0; // Decrementing a bit just sets it to 0 minum state
         return *this;
     }
     operator bool() const
     {
         return value;
     }
+};
+
+struct byte
+{
+    bit b0;
+    bit b1;
+    bit b2;
+    bit b3;
+    bit b4;
+    bit b5;
+    bit b6;
+    bit b7;
 };
